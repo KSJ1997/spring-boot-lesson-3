@@ -68,4 +68,8 @@ public class IssueService {
     public Issue getIssueById(long id) {
         return issueRepository.findById(id);
     }
+
+    public Object getAllIssues() {
+        throw new UnsupportedOperationException("Unimplemented method 'getAllIssues'");
+    }
 }

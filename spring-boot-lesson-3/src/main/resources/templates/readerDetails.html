@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о читателе</title>
+</head>
+<body>
+    <h1 th:text="'Информация о читателе ' + ${reader.name}"></h1>
+    <p>Идентификатор: <span th:text="${reader.id}"></span></p>
+    <p>Имя: <span th:text="${reader.name}"></span></p>
+    <p>Книги на руках:</p>
+    <ul>
+        <li th:each="book : ${reader.books}" th:text="${book.title}"></li>
+    </ul>
+</body>
+</html>
