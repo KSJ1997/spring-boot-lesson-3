@@ -2,15 +2,18 @@ package ru.gb.springbootlesson3.entity;
 
 import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 @Data
 public class Reader {
-    private static long genId;
 
-    private final long id;
-    private final String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public Reader(String name) {
-        id = genId++;
-        this.name = name;
-    }
+    private String name;
 }
