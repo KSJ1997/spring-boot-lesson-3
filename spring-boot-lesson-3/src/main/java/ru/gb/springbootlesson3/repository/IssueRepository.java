@@ -8,5 +8,4 @@ import java.util.List;
 public interface IssueRepository extends JpaRepository<Issue, Long> {
     long countByReaderId(long readerId);
     List<Issue> findByReaderId(long readerId);
-    int countBooksIssuedToReader(long readerId);
 }

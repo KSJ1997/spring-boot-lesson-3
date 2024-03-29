@@ -16,4 +16,11 @@ public class Book {
     private Long id;
 
     private String name;
+
+    public Book(String name) {
+        this.name = name;
+    }
+
+    public Book() {
+    }
 }

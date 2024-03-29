@@ -36,26 +36,29 @@ public class IssueService {
             throw new NoSuchElementException("Не удалось найти читателя с id " + request.getReaderId());
         }
 
-        if (issueRepository.countBooksIssuedToReader(request.getReaderId()) >= maxAllowedBooks) {
+        if (issueRepository.countByReaderId(request.getReaderId()) >= maxAllowedBooks) {
             log.info("Пользователь уже имеет на руках максимально допустимое количество книг");
             throw new IllegalStateException("Пользователь уже имеет на руках максимально допустимое количество книг");
         }
 
-        Issue issue = new Issue(request.getReaderId(), request.getBookId(), LocalDateTime.now(), null);
-        issueRepository.createIssue(issue);
-        return issue;
+        Issue issue = new Issue();
+        issue.setReader(readerRepository.findById(request.getReaderId()).orElseThrow(() ->
+                new NoSuchElementException("Не удалось найти читателя с id " + request.getReaderId())));
+        issue.setBook(bookRepository.findById(request.getBookId()).orElseThrow(() ->
+                new NoSuchElementException("Не удалось найти книгу с id " + request.getBookId())));
+        issue.setIssuedAt(LocalDateTime.now());
+        issue.setReturnedAt(null); // Предполагается, что при создании выдачи она еще не закрыта
+
+        return issueRepository.save(issue);
     }
 
     public List<Issue> getIssuesForReader(long readerId) {
-        return issueRepository.findIssuesByReaderId(readerId);
+        return issueRepository.findByReaderId(readerId);
     }
 
     public void closeIssue(long issueId) {
-        Issue issue = issueRepository.findById(issueId);
-        if (issue == null) {
-            log.info("Не удалось найти выдачу с id " + issueId);
-            throw new NoSuchElementException("Не удалось найти выдачу с id " + issueId);
-        }
+        Issue issue = issueRepository.findById(issueId).orElseThrow(() ->
+                new NoSuchElementException("Не удалось найти выдачу с id " + issueId));
         if (issue.getReturnedAt() != null) {
             log.info("Выдача с id " + issueId + " уже закрыта");
             throw new IllegalStateException("Выдача с id " + issueId + " уже закрыта");
@@ -66,7 +69,7 @@ public class IssueService {
     }
 
     public Issue getIssueById(long id) {
-        return issueRepository.findById(id);
+        return issueRepository.findById(id).orElse(null);
     }
 
     public Object getAllIssues() {

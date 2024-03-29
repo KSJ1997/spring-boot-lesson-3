@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 public class Issue {
 
     @Id
-    @GeneratedValue(long l, long m, LocalDateTime localDateTime, Object objectstrategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -24,4 +24,14 @@ public class Issue {
     private LocalDateTime issuedAt;
 
     private LocalDateTime returnedAt;
+
+    public Issue() {
+    }
+
+    public Issue(Reader reader, Book book, LocalDateTime issuedAt, LocalDateTime returnedAt) {
+        this.reader = reader;
+        this.book = book;
+        this.issuedAt = issuedAt;
+        this.returnedAt = returnedAt;
+    }
 }
