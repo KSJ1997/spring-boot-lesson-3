@@ -40,6 +40,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- Добавленная зависимость на драйвер Swagger  -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
+        </dependency>
         <!-- Добавленная зависимость на драйвер MySQL -->
         <dependency>
             <groupId>mysql</groupId>
