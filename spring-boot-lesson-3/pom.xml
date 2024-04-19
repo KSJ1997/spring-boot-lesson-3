@@ -19,7 +19,7 @@
     <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>javax.servlet-api</artifactId>
-        <version>4.0.1</version> <!-- Или любая другая подходящая версия -->
+        <version>4.0.1</version>
         <scope>provided</scope>
     </dependency>
     <dependencies>
@@ -46,7 +46,21 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- Добавленная зависимость на драйвер Swagger  -->
+        <!-- Добавленная зависимость для JUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Добавленная зависимость для Mockito -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.12.4</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Добавленная зависимость на драйвер Swagger -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>
