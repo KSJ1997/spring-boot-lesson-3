@@ -1,6 +1,7 @@
 package ru.gb.springbootlesson3.demo;
 
 import org.springframework.stereotype.Service;
+import ru.gb.springbootlesson3.entity.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -14,7 +14,7 @@ import ru.gb.springbootlesson3.services.BookService;
 
 import java.util.Arrays;
 import java.util.List;
-
+import ru.gb.springbootlesson3.entity.User;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -59,8 +59,12 @@ public class BookControllerTest {
         mockMvc.perform(delete("/book/{id}", bookId))
                 .andExpect(status().isNoContent());
 
-        // Verify that the deleteBookById method of bookService is called with the correct bookId
+
         verify(bookService).deleteBookById(bookId);
+    }
+
+    private BookService verify(BookService bookService2) {
+        throw new UnsupportedOperationException("Unimplemented method 'verify'");
     }
 
     @Test

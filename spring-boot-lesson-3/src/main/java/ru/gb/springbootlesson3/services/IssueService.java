@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import ru.gb.springbootlesson3.aspect.Timer;
 import ru.gb.springbootlesson3.controllers.IssueRequest;
 import ru.gb.springbootlesson3.entity.Issue;
 import ru.gb.springbootlesson3.repository.BookRepository;
@@ -26,6 +28,8 @@ public class IssueService {
     @Value("${application.issue.max-allowed-books:1}")
     private int maxAllowedBooks;
 
+
+    @Timer
     public Issue createIssue(IssueRequest request) {
         if (bookRepository.findById(request.getBookId()).isEmpty()) {
             log.info("Не удалось найти книгу с id " + request.getBookId());
@@ -52,6 +56,8 @@ public class IssueService {
         return issueRepository.save(issue);
     }
 
+
+    @Timer
     public List<Issue> getIssuesForReader(long readerId) {
         return issueRepository.findByReaderId(readerId);
     }

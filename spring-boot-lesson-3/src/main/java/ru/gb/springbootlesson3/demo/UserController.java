@@ -3,6 +3,7 @@ package ru.gb.springbootlesson3.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.gb.springbootlesson3.entity.User;
 
 import java.util.List;
 

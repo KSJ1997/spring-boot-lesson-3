@@ -23,4 +23,20 @@ public class Book {
 
     public Book() {
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTitle() {
+        return name;
+    }
+
+    public void setTitle(String title) {
+        this.name = title;
+    }
 }

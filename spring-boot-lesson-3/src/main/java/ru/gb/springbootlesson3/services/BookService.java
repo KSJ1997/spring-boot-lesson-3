@@ -2,6 +2,8 @@ package ru.gb.springbootlesson3.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import ru.gb.springbootlesson3.aspect.Timer;
 import ru.gb.springbootlesson3.controllers.BookRequest;
 import ru.gb.springbootlesson3.entity.Book;
 import ru.gb.springbootlesson3.repository.BookRepository;
@@ -16,11 +18,13 @@ public class BookService {
 
     private final BookRepository bookRepository;
 
+    @Timer
     public Book getBookById(long id) {
         Optional<Book> optionalBook = bookRepository.findById(id);
         return optionalBook.orElse(null);
     }
 
+    @Timer
     public void deleteBookById(long id) {
         bookRepository.deleteById(id);
     }
